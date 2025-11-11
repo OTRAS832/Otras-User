@@ -133,13 +133,14 @@ const Declaration: React.FC<DeclarationProps> = ({
       const payload = new FormData();
 
       // Append static fields
-      if (candidateIdNumber !== null) {
-        payload.append("candidateId", String(candidateIdNumber));
-      }
+      // if (candidateIdNumber !== null) {
+      //   payload.append("candidateId", String(candidateIdNumber));
+      // }
       payload.append("registrationType", "MANUAL");
 
       // ✅ Append all individual form fields (NOT as JSON)
       const allData = {
+         candidateId: Number(candidateIdNumber),
         ...formData.personalDetails,
         ...formData.professionalDetails,
         ...formData.additionalDetails,
@@ -166,7 +167,7 @@ const Declaration: React.FC<DeclarationProps> = ({
 
       // ✅ API call
       const res = await axios.post(
-        "http://localhost:8068/api/candidate/register",
+        "https://otrasfinalbackend-31829298905.europe-west1.run.app/api/candidate/register",
         payload,
       );
       navigate('/home')

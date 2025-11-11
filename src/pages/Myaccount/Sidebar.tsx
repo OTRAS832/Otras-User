@@ -9,6 +9,8 @@ import {
   CreditCard,
   LogOut,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store";
 
 interface MenuItem {
   icon: React.ReactNode;
@@ -27,6 +29,7 @@ const menuItems: MenuItem[] = [
 ];
 
 const SidebarItem: React.FC<MenuItem> = ({ icon, label, path }) => (
+  
   <NavLink
     to={path}
     className={({ isActive }) => `
@@ -50,7 +53,8 @@ const Sidebar: React.FC = () => {
 
   window.location.href = "/";
   };
-
+ const candidateName = useSelector((state: RootState) => state.user.userName);
+ const otrId = localStorage.getItem("otrNumber");
   return (
     <div
       className="
@@ -67,7 +71,7 @@ const Sidebar: React.FC = () => {
       <div className="flex flex-col items-center text-center w-full px-4 py-5 border-b border-white/30">
         <div className="relative">
           <img
-            src="https://placehold.co/100x100/ffffff/003366?text=V"
+            src="https://placehold.co/100x100/ffffff/003366?text=M"
             alt="Profile"
             className="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover"
           />
@@ -76,8 +80,8 @@ const Sidebar: React.FC = () => {
           </span>
         </div>
         <div className="mt-3 text-left w-full">
-          <p className="text-sm font-semibold text-white">Name : Vanshita</p>
-          <p className="text-sm font-semibold mt-1 text-white">SPN ID : API25XXXXX</p>
+          <p className="text-sm font-semibold text-white">Name : {candidateName? candidateName : 'Vanshita'}</p>
+          <p className="text-sm font-semibold mt-1 text-white">SPN ID : {otrId ? otrId : 'API25XXXXX'}</p>
         </div>
       </div>
 

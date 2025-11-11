@@ -113,7 +113,8 @@ const SignUpForm: React.FC = () => {
           mobile: values.mobile,
           emailOtp: values.emailOtp,
           mobileOtp: values.mobileOtp,
-          gender: values.gender,
+          // gender: values.gender,
+          gender: values.gender === "Male" ? "M" : "F",
           dateOfBirth: values.dob
             ? new Date(values.dob).toISOString().split("T")[0]
             : "", // ✅ string (no null)

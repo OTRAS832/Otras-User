@@ -98,7 +98,7 @@ const JobApplicationForm: React.FC = () => {
                         Select Your Coordination Center
                     </p>
                     <div className="flex justify-center flex-wrap gap-4">
-                        {["Center - 1", "Center - 2", "Center - 3"].map((label) => (
+                        {["Vignan University", "Center - 2", "Center - 3"].map((label) => (
                             <button
                                 key={label}
                                 type="button"

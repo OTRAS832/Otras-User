@@ -65,7 +65,7 @@ const UserLoginForm: React.FC = () => {
             setUserData({
               jwt: response.data.jwt,
               userId: response.data.userId,
-              userName: response.data.userName,
+              userName: response.data.name,
               candidateId: response.data.candidateId,
             })
           );

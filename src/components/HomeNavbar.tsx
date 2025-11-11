@@ -24,8 +24,7 @@ const HomeNavbar: React.FC = () => {
   const candidateId = useSelector((state: RootState) => state.user.candidateId);
   const otrCondidateId = useSelector((state: RootState) => state.otr.otrCondidateId);
   const otrId = localStorage.getItem("otrNumber");
-  console.log(userdata,candidateId)
-
+  console.log(otrId)
 
  useEffect(() => {
   const fetchUserData = async () => {
@@ -35,9 +34,9 @@ const HomeNavbar: React.FC = () => {
       if (success) {
         setUserData(success?.data)
         console.log(success?.data)
-        if(success?.data[0].otrasId){
-          localStorage.setItem("otrNumber", success?.data[0].otrasId);
-        }
+        // if(success?.data[0].otrasId){
+        //   localStorage.setItem("otrNumber", success?.data[0].otrasId);
+        // }
       } 
     } catch (error) {
       console.error(error);
@@ -168,13 +167,13 @@ const handleAdmitCardDownload = async () => {
             onClick={() => navigate("/otr")}
             className="mx-6 md:mx-0 my-3 md:my-0 bg-gradient-to-r from-yellow-200 to-yellow-300 px-6 py-1.5 rounded-full font-bold text-[#0a0a23] hover:opacity-90 transition duration-200"
           >
-            OTR
+            {otrId ? otrId :'Creat OTR'}
           </button>
 
           {/* Profile */}
           <FaUserCircle
             size={28}
-            onClick={() => navigate("/my-account")}
+            onClick={() => navigate("/Myaccount/Wallet")}
             className="cursor-pointer mx-6 md:mx-0 mb-3 md:mb-0 hover:text-yellow-300 transition"
             title="Profile"
           />

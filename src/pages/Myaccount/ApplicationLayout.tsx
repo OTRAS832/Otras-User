@@ -28,7 +28,7 @@ const ApplicationLayout: React.FC = () => {
           <main>
             <Routes>
               {/* ✅ Default route – Redirect to Wallet */}
-<Route path="Myaccount/Wallet" element={<Navigate to="/" replace />} />
+              <Route path="/Myaccount/Wallet" element={<Navigate to="/Myaccount/Wallet" replace />} />
 
               {/* 🧾 Pages */}
               <Route path="Wallet" element={<Wallet />} />

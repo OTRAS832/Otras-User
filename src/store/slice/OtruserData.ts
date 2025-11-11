@@ -27,7 +27,9 @@ interface UserState {
 const initialState: UserState = {
   otrNumber: localStorage.getItem("otrNumber"),
   otrCondidateId: localStorage.getItem("otrCondidateId"),
-  paymentData: null,
+  paymentData: localStorage.getItem("userotrData")
+    ? JSON.parse(localStorage.getItem("userotrData")!)
+    : null,
 };
 
 /* -------------------------------------------------------------------------- */
@@ -43,6 +45,7 @@ const otrSlice = createSlice({
         localStorage.setItem("otrNumber", state.otrNumber);
       }
     },
+
     setOtrCandidateId: (state, action: PayloadAction<Partial<UserState>>) => {
       if (action.payload.otrCondidateId !== undefined && action.payload.otrCondidateId !== null) {
         state.otrCondidateId = String(action.payload.otrCondidateId);
@@ -50,7 +53,6 @@ const otrSlice = createSlice({
       }
     },
 
-   
     setOtrNumber: (state, action: PayloadAction<string | null>) => {
       state.otrNumber = action.payload;
       if (action.payload) {
@@ -67,7 +69,6 @@ const otrSlice = createSlice({
       localStorage.removeItem("userotrData");
     },
 
-    // ✅ NEW: Store full payment/application data
     setPaymentData: (state, action: PayloadAction<ApplicationData | null>) => {
       state.paymentData = action.payload;
       if (action.payload) {
@@ -82,5 +83,6 @@ const otrSlice = createSlice({
 /* -------------------------------------------------------------------------- */
 /* 📦 4️⃣ Exports */
 /* -------------------------------------------------------------------------- */
-export const { setOtrData, setOtrNumber,setOtrCandidateId, clearUserData, setPaymentData } = otrSlice.actions;
+export const { setOtrData, setOtrNumber, setOtrCandidateId, clearUserData, setPaymentData } =
+  otrSlice.actions;
 export default otrSlice.reducer;

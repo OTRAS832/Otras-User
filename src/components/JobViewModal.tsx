@@ -18,10 +18,10 @@ const JobViewModal: React.FC<JobViewModalProps> = ({ open, onClose, job }) => {
 const dispatch = useDispatch();
   const [data, setData] = useState<any>(null);
   const [loading] = useState<boolean>(false);
-
+ const otrId = localStorage.getItem("otrNumber");
   // ✅ Get user candidateId from Redux
   const candidateId = useSelector((state: RootState) => state.user.candidateId);
- 
+ console.log(candidateId)
 
   // 🚫 Don't render if modal is closed
   if (!open) return null;
@@ -53,10 +53,8 @@ const dispatch = useDispatch();
     onClose();
 
     // ✅ Check if OTRAS ID exists
-    if (data?.otrasId) {
+    if (otrId !== null) {
       toast.success("✅ Redirecting to Job Application Form...");
-      localStorage.setItem("otrNumber",data?.otrasId);
-      dispatch(setOtrData({ otrNumber:data?.otrasId }));
       navigate("/jobApplicationForm", { state: { otrasId: data.otrasId, job } });
     } else {
       // ❌ User hasn’t done OTR
