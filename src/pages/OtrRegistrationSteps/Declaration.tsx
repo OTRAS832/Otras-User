@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store";
 import { setOtrData } from "../../store/slice/OtruserData";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 /* -------------------------------------------------------------------------- */
 /* 🎯 1️⃣ Type Definitions (copied locally for self-contained setup) */
@@ -108,7 +109,7 @@ const Declaration: React.FC<DeclarationProps> = ({
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   // ✅ Fetch candidateId from Redux store
   const candidateId = useSelector((state: RootState) => state.user.candidateId);
   const candidateIdNumber = candidateId ? Number(candidateId) : null;
@@ -168,7 +169,7 @@ const Declaration: React.FC<DeclarationProps> = ({
         "http://localhost:8068/api/candidate/register",
         payload,
       );
-
+      navigate('/home')
       console.log("✅ API Success:", res.data);
       toast.success('Registration submitted successfully!')
       localStorage.setItem("otrNumber", res.data.otrasId);
