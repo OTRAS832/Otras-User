@@ -5,7 +5,7 @@ import { FaDownload, FaExternalLinkAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import type { RootState } from "../store";
 import { GetgetCandidateOTRAS } from "../services/apiHelpers";
-import { setOtrCandidateId, setOtrData } from "../store/slice/OtruserData";
+import { setOtrCandidateId } from "../store/slice/OtruserData";
 
 interface JobViewModalProps {
   open: boolean;

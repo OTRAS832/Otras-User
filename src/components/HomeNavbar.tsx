@@ -20,7 +20,6 @@ const HomeNavbar: React.FC = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [userdata, setUserData] = useState([]);
   const candidateId = useSelector((state: RootState) => state.user.candidateId);
   const otrCondidateId = useSelector((state: RootState) => state.otr.otrCondidateId);
   const otrId = localStorage.getItem("otrNumber");
@@ -32,7 +31,7 @@ const HomeNavbar: React.FC = () => {
       setLoading(true);
       const success = await GetuserDataOtr(candidateId);
       if (success) {
-        setUserData(success?.data)
+        // setUserData(success?.data)
         console.log(success?.data)
         // if(success?.data[0].otrasId){
         //   localStorage.setItem("otrNumber", success?.data[0].otrasId);
