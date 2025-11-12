@@ -55,8 +55,9 @@ declare module "axios" {
 
 const httpClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080",
-  headers: {
+ headers: {
     deviceType: "Web",
+    "Content-Type": "application/json",
   },
   withCredentials: true, // ✅ Allow sending cookies if backend supports it
 });
